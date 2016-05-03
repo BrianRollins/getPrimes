@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prime Number Generator</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+    <script src="getPrimes.js">
+    </script>
+</head>
+<body>
+    <div class="notes" id="header">
+        <h1>Get Some Prime Numbers</h1><i aria-hidden="true" class="fa fa-github"></i> <a href=
+        "https://github.com/BrianRollins/getPrimes" target="_blank">Get the Code</a><br>
+        <i aria-hidden="true" class="fa fa-code"></i> <a href="http://www.brianrollins.com" target=
+        "_blank">BrianRollins.com</a><br>
+    </div>
+    <div class="intro notes">
+        This is a recursive algorithm. That means, the larger the numbers you put in, the longer it will take to
+        compute an answer. It all depends on the speed of your computer. Really big numbers may make your browser lock
+        up (or at least appear to be unresponsive).<br>
+        <br>
+        <br>
+        <br>
+        <form>
+            Search from <input id="primeStart" name="primeStart" placeholder="Start" size="5" value="1"> to <input id=
+            "primeEnd" name="primeEnd" placeholder="End" size="5" value="1000"><br>
+            <br>
+            <input onclick=
+            "getAndShowPrimes(document.getElementById('primeStart').value, document.getElementById('primeEnd').value);"
+            type="button" value="Get Primes!"> <label for="golog">Log to Console?</label> <input id="golog" name=
+            "golog" type="checkbox" value="golog">
+        </form>
+    </div>
+    <div class="notes" id="myPrimes">
+        <div id="myPrimesList"></div>
+    </div>
+    <script>
+      function getAndShowPrimes(min, max) {
+        document.getElementById("myPrimes").innerHTML = "<div id='myPrimesList'><\/div>"; //Clear the results from before (if any).        
+        var range = getPrimes(parseInt(min), parseInt(max), document.getElementById("golog").checked);
+        for(var i=0;i<range.length;i++){
+          document.getElementById("myPrimesList").innerHTML += range[i];
+          if(i < range.length-1) {
+            document.getElementById("myPrimesList").innerHTML += ", ";
+          }
+        }
+        document.getElementById("myPrimes").innerHTML += "<br/><br/>I found " + range.length + " prime numbers.<br/>";
+        document.getElementById("myPrimes").innerHTML += "The lowest prime in the range is " + range.lowest + ".<br/>";
+        document.getElementById("myPrimes").innerHTML += "The highest prime in the range is " + range.highest + ".<br/>";
+        document.getElementById("myPrimes").innerHTML += "The calculations took " + range.duration + "ms.";
+      }      
+    </script>
+</body>
+</html>
