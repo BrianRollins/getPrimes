@@ -7,11 +7,11 @@ JavaScript to get a list of prime numbers within a range.
    
    Usage
    
-   **Get an array of prime numbers from 1 to 100.**
+   Get an array of prime numbers from 1 to 100.
    var primes = getPrimes(1, 100); 
    
-   **Get an array of prime numbers from 99 to 1011**
-   **and log activity and messages to the console.**
+   Get an array of prime numbers from 99 to 1011
+   and log activity and messages to the console.
    var morePrimes = getPrimes(99, 1011, true); 
    
    Params
